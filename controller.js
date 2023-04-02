@@ -1,16 +1,16 @@
 // Import mongoose
 import mongoose from "mongoose";
 // Add setup lines of code such as mongoose.connect
-mongoose.connect("mongodb://localhost:27017/test");
+mongoose.connect("mongodb://localhost:27017/DBTeam");
 
 //schema for unregistered user
-const unregisteredSchema = new mongoose.Schema({
+const UnregisteredUser = new mongoose.model("Unregistered_User", {
     bookmarks: Array
 });
 
 
 //schema for registered user
-const registeredSchema = new mongoose.Schema({
+const RegisteredUser = new mongoose.model("Registered_User", {
     userId: String,
     email: String,
     password: String,
@@ -23,7 +23,7 @@ const registeredSchema = new mongoose.Schema({
 });
 
 //schema for admin
-const adminSchema = new mongoose.Schema({
+const Admin = new mongoose.model("Admin", {
     adminId: String,
     email: String,
     password: String,
@@ -32,7 +32,7 @@ const adminSchema = new mongoose.Schema({
 });
 
 //schema for accomodation owner
-const accOwnerSchema = new mongoose.Schema({
+const AccomodationOwner = new mongoose.model("Accomodation_Owner", {
     userId: String,
     email: String,
     password: String,
@@ -46,7 +46,7 @@ const accOwnerSchema = new mongoose.Schema({
 });
 
 //schema for accomodation
-const accomodationSchema = new mongoose.Schema({
+const Accomodation = new mongoose.model("Accomodation", {
     accId: String,
     ownerId: String,
     name: String,
@@ -64,12 +64,6 @@ const accomodationSchema = new mongoose.Schema({
     category: String
 });
 
-const Unregistered = mongoose.model("unregistered_users", unregisteredSchema);
-const Registered = mongoose.model("registered_users", registeredSchema);
-const Admin = mongoose.model("admins", adminSchema);
-const AccomodationOwner = mongoose.model("accommodation_owners", accOwnerSchema);
-const Accomodation = mongoose.model("accomodations", accomodationSchema);
-
 // Create the function saveUser
 const createRegUser = (req, res) => {
     // Initialize an object called response with a success field
@@ -80,7 +74,7 @@ const createRegUser = (req, res) => {
   
     // Create a new instance of the model
     // The value for each field will come from the body of the POST request
-    const newRegUser = new registeredSchema({
+    const newRegUser = new RegisteredUser({
         userId: req.body.userId,
         email: req.body.email,
         password: req.body.password,

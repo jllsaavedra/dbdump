@@ -5,7 +5,7 @@ import { createRegUser } from "./controller.js";
 const router = (app) => {
 
   // Define each endpoint and its corresponding controller function
-  app.get("/create-reg-user", createRegUser);
+  app.post("/create-reg-user", createRegUser);
 
 }
 

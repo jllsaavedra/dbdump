@@ -1,6 +1,6 @@
 import needle from "needle";
 
-// Send a POST request for the POST /save-user endpoint
+// Send a POST request for the POST /create-reg-user endpoint
 needle.post(
     // URL
     "http://localhost:3000/create-reg-user",

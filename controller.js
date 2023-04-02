@@ -3,13 +3,12 @@ import mongoose from "mongoose";
 // Add setup lines of code such as mongoose.connect
 mongoose.connect("mongodb://localhost:27017/DBTeam");
 
-//schema for unregistered user
+// Create a mongoose model, define a schema directly in the model
 const UnregisteredUser = new mongoose.model("Unregistered_User", {
     bookmarks: Array
 });
 
-
-//schema for registered user
+// Create a mongoose model, define a schema directly in the model
 const RegisteredUser = new mongoose.model("Registered_User", {
     userId: String,
     email: String,
@@ -22,7 +21,7 @@ const RegisteredUser = new mongoose.model("Registered_User", {
     contact: Number,
 });
 
-//schema for admin
+// Create a mongoose model, define a schema directly in the model
 const Admin = new mongoose.model("Admin", {
     adminId: String,
     email: String,
@@ -31,7 +30,7 @@ const Admin = new mongoose.model("Admin", {
     lname: String
 });
 
-//schema for accomodation owner
+// Create a mongoose model, define a schema directly in the model
 const AccomodationOwner = new mongoose.model("Accomodation_Owner", {
     userId: String,
     email: String,
@@ -45,7 +44,7 @@ const AccomodationOwner = new mongoose.model("Accomodation_Owner", {
     bday: Date
 });
 
-//schema for accomodation
+// Create a mongoose model, define a schema directly in the model
 const Accomodation = new mongoose.model("Accomodation", {
     accId: String,
     ownerId: String,
@@ -64,7 +63,7 @@ const Accomodation = new mongoose.model("Accomodation", {
     category: String
 });
 
-// Create the function saveUser
+// Create the function createRegUser
 const createRegUser = (req, res) => {
     // Initialize an object called response with a success field
     // This would indicate if a document was successfully saved in the database

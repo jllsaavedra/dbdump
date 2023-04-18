@@ -1,6 +1,6 @@
 // Index.js will contain the server code
 // Import express
-import express from "express";
+const express = require("express");
 
 // Instantiate the server using express as a constructor
 const app = express();
@@ -10,9 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Import router, then execute the function exported from it
-import router from "./router.js";
-// Make sure to pass app as we need it in router.js
-router(app);
+require("./router")(app);
 
 // Initialize the server to listen to port 3000 for message request
 app.listen(3000, () => {

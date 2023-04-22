@@ -162,17 +162,17 @@ const needle = require("needle");
 // );
 
 
-needle.post(
-    "http://localhost:3000/search-reg-user",
-    {
-        name: "J"
-    },
-    // Callback function
-    (error, response) => {
-        // This response body should print an object with field success = true
-        console.log(response.body);
-    }
-)
+// needle.post(
+//     "http://localhost:3000/search-reg-user",
+//     {
+//         name: "J"
+//     },
+//     // Callback function
+//     (error, response) => {
+//         // This response body should print an object with field success = true
+//         console.log(response.body);
+//     }
+// )
 
 // needle.post(
 //     "http://localhost:3000/edit-reg-user",
@@ -210,3 +210,106 @@ needle.post(
 //     }
 // )
 
+// // Send a POST request for the POST /create-reg-user endpoint
+// needle.post(
+//     // URL
+//     "http://localhost:3000/create-accommodation-owner",
+//     // Object representing the contents of the request body
+//     {   userId: "1401401840812nosf-j",
+//         email: "req.body.email",
+//         password: "req.body.password",
+//         fname: "Thomas",
+//         lname: "req.body.lname",
+//         accomsList: [],
+//         rating: 0,
+//         overallratings: 0,
+//         contact: 125125122141,
+//         bday: "01/01/2001"
+//     },
+//     // Callback function
+//     (error, response) => {
+//         // This response body should print an object with field success = true
+//         console.log(response.body);
+//     }
+// );
+
+// // Send a POST request for the POST /create-reg-user endpoint
+// needle.post(
+//     // URL
+//     "http://localhost:3000/create-accommodation-owner",
+//     // Object representing the contents of the request body
+//     {   userId: "ngou23hi0fn24",
+//         email: "req.body.email",
+//         password: "req.body.password",
+//         fname: "Francis",
+//         lname: "req.body.lname",
+//         accomsList: [],
+//         rating: 0,
+//         overallratings: 0,
+//         contact: 125125122141,
+//         bday: "01/01/2001"
+//     },
+//     // Callback function
+//     (error, response) => {
+//         // This response body should print an object with field success = true
+//         console.log(response.body);
+//     }
+// );
+
+// needle.post(
+//     "http://localhost:3000/find-all-accommodation-owner",
+//     {
+//     },
+//     // Callback function
+//     (error, response) => {
+//         // This response body should print an object with field success = true
+//         console.log(response.body);
+//     }
+// )
+
+// // Send a POST request for the POST /create-reg-user endpoint
+// needle.post(
+//     // URL
+//     "http://localhost:3000/create-admin",
+//     // Object representing the contents of the request body
+//     {   adminId: "vf310rh180un`f",
+//         email: "String",
+//         password: "String",
+//         fname: "Edver",
+//         lname: "String"
+//     },
+//     // Callback function
+//     (error, response) => {
+//         // This response body should print an object with field success = true
+//         console.log(response.body);
+//     }
+// );
+
+// // Send a POST request for the POST /create-reg-user endpoint
+// needle.post(
+//     // URL
+//     "http://localhost:3000/create-admin",
+//     // Object representing the contents of the request body
+//     {   adminId: "lfgnq3onrofn",
+//         email: "String",
+//         password: "String",
+//         fname: "Ryan",
+//         lname: "String"
+//     },
+//     // Callback function
+//     (error, response) => {
+//         // This response body should print an object with field success = true
+//         console.log(response.body);
+//     }
+// );
+
+needle.post(
+    "http://localhost:3000/find-all-admin",
+    {
+    },
+    // Callback function
+    (error, response) => {
+        // This response body should print an object with field success = true
+        console.log(response.body);
+    }
+)

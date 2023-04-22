@@ -237,3 +237,162 @@ exports.findAllAccommodations = (req, res) => {
     return res.send(accommodations)
   }).sort({"name":-1})
 }
+
+// Create the function createAccomodationOwner
+exports.createAccomodationOwner = (req, res) => {
+    // Initialize an object called response with a success field
+    // This would indicate if a document was successfully saved in the database
+    var response = {
+      success: false
+    }
+  
+    // Create a new instance of the model
+    // The value for each field will come from the body of the POST request
+    const newAccomodationOwner = new AccomodationOwner({
+      userId: req.body.userId,
+      email: req.body.email,
+      password: req.body.password,
+      fname: req.body.fname,
+      lname: req.body.lname,
+      accomsList: req.body.accomsList,
+      rating: req.body.rating,
+      overallratings: req.body.overallratings,
+      contact: req.body.Number,
+      bday: req.body.bday
+    });
+  
+    // Call the save method on the created new instance of the model
+    newAccomodationOwner.save((err) => {
+      // Check for error before doing anything
+      if(!err) {
+        // Set the success field of response to true if no error was found
+        console.log("User added successfully.");
+        response["success"] = true;
+        // Send response as server's response
+        res.send(response);
+      }
+      // If an error is encountered
+      // Send response with success = false as server's response
+      else{
+        res.send(response); 
+      }
+    });
+  }
+
+// find all accomodation owners
+exports.getAllAccomodationOwner = (req, res) => {
+  AccomodationOwner.find({}, (err, accomowners) => {
+  	if (err || !accomowners){
+  		console.log("No accomodation owners to show!");
+  		return res.send({success:false});
+  	}
+  	return res.send(accomowners)
+  }).sort({"name":-1})
+}
+
+// find one accomodation owner
+exports.getAccomodationOwner = (req, res) => {
+	const name = req.query.name;
+ 	AccomodationOwner.find({ $or: [{fname: {$regex: name, $options: 'i'}}, {lname: {$regex: name, $options: 'i'}}]}, (err,accomowner) => {
+      res.send(accomowner)
+  })
+ }
+
+
+// update first name of one accomodation owner
+exports.updateAccomodationOwner = (req, res) => {
+    const userId = req.body.userId
+    const newFname = req.body.fname
+    
+    AccomodationOwner.updateOne({userId}, {fname: newFname}, (err, output) => {
+    if (!err){
+    	return res.send(output)
+    }
+})}
+// delete one accomodation owner
+exports.deleteAccomodationOwner = (req, res) => {
+  const userId = req.body.userId
+
+  AccomodationOwner.deleteOne({userId},  (err, output) => {
+    if (!err){
+      return res.send(output)
+    }
+  })
+}
+
+ // Create Admin
+ exports.createAdmin = (req, res) => {
+    // Initialize an object called response with a success field
+    // This would indicate if a document was successfully saved in the database
+    var response = {
+      success: false
+    }
+  
+    // Create a new instance of the model
+    // The value for each field will come from the body of the POST request
+    const newAdmin = new Admin({
+      adminId: req.body.adminId,
+      email: req.body.email,
+      password: req.body.password,
+      fname: req.body.fname,
+      lname: req.body.lname,
+    });
+  
+    // Call the save method on the created new instance of the model
+    newAdmin.save((err) => {
+      // Check for error before doing anything
+      if(!err) {
+        // Set the success field of response to true if no error was found
+        console.log("User added successfully.");
+        response["success"] = true;
+        // Send response as server's response
+        res.send(response);
+      }
+      // If an error is encountered
+      // Send response with success = false as server's response
+      else{
+        res.send(response); 
+      }
+    });
+  } 
+
+// find all admin
+exports.getAllAdmin = (req, res) => {
+  Admin.find({}, (err, admins) => {
+    if (err || !admins){
+      console.log("No admins to show!");
+      return res.send({success:false});
+    }
+    return res.send(admins)
+  }).sort({"name":-1})
+}
+
+// find one admin
+exports.getAdmin = (req, res) => {
+  const name = req.query.name;
+  Admin.find({ $or: [{fname: {$regex: name, $options: 'i'}}, {lname: {$regex: name, $options: 'i'}}]}, (err,admn) => {
+      res.send(admn)
+  })
+ }
+
+// update first name of one admin
+exports.updateAdmin = (req, res) => {
+    const adminId = req.body.adminId
+    const newFname = req.body.fname
+    
+    Admin.updateOne({adminId}, {fname: newFname}, (err, output) => {
+    if (!err){
+      return res.send(output)
+    }
+})}
+
+// delete one admin
+exports.deleteAdmin = (req, res) => {
+  const adminId = req.body.adminId
+
+  Admin.deleteOne({adminId},  (err, output) => {
+    if (!err){
+      return res.send(output)
+    }
+  })
+}
